@@ -1,0 +1,27 @@
+{
+  "name": "Emitter",
+  "version": "1.0.0",
+  "description": "event emiiter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devWayne/Emitter.git"
+  },
+  "keywords": [
+    "event",
+    "emitter"
+  ],
+  "author": "Vi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devWayne/Emitter/issues"
+  },
+  "homepage": "https://github.com/devWayne/Emitter",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0"
+  }
+}
