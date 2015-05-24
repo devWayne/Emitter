@@ -14,19 +14,18 @@ var proto = {
 
     on: function(eventName, callback) {
         this._callback = this._callback || {},
-            this._callback[eventName] ? this._callback[eventName].push(callback) : (this._callback[eventName]=this._callback[eventName]||[]).push(callback);
+            this._callback[eventName] ? this._callback[eventName].push(callback) : (this._callback[eventName] = this._callback[eventName] || []).push(callback);
         return this;
     },
 
     off: function(eventName, callback) {
-        arguments.length == 0 ? this._callback = {}:
-        arguments.length == 1 ? delete this._callback[eventName]:
-	arguments.length == 2 ? (function(){
-		this._callback[eventName]= this._callback[eventName] || [];
-		this._callback[eventName].forEach(function(v,idx){
-			callback === v? Array.prototype.splice.call(this._callback[eventName],idx, 1) :false;
-		}.bind(this))
-	}.bind(this))():false;
+        arguments.length == 0 ? this._callback = {} :
+            arguments.length == 1 ? delete this._callback[eventName] :(function() {
+                this._callback[eventName] = this._callback[eventName] || [];
+                this._callback[eventName].forEach(function(v, idx) {
+                    callback === v ? Array.prototype.splice.call(this._callback[eventName], idx, 1) : false;
+                }.bind(this))
+            }.bind(this))();
         return this;
     },
 
@@ -40,14 +39,14 @@ var proto = {
     },
 
     emit: function(eventName) {
-	 this._callback[eventName] = this._callback[eventName] || [];
-	 this._callback[eventName].forEach(function(fn,idx){
-	 	fn.apply(this, arguments);
-	 });
-	 return this; 
+        this._callback[eventName] = this._callback[eventName] || [];
+        this._callback[eventName].forEach(function(fn, idx) {
+            fn.apply(this, arguments);
+        });
+        return this;
     }
 }
 
 Emitter.prototype = proto;
 
-//module.exports = Emitter;
+typeof module != 'undefined' ? module.exports = Emitter : this[Emitter] = Emitter;
