@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>Emitter</title>
+</head>
+<body>
+<script src="emitter.js"></script>
+<script>
+var _obj={};
+Emitter(_obj);
+
+var fn=function(){
+	console.log('on fire');	
+}
+_obj.on('fire',fn)
+
+_obj.emit('fire');
+
+_obj.off('fire',fn);
+
+</script>
+</body>
+</html>
